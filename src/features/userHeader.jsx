@@ -8,15 +8,15 @@ import { NavLink } from "react-router-dom";
 import { decodeToken } from "react-jwt";
 
 import PostData from "../services/services";
-import { getUserInfos } from "./userInfosSlice";
-import { logIn } from "./userSlice";
+import { getUserInfos } from "./userInfos/userInfosSlice";
+import { logIn, isLoading } from "./userSlice";
 
 export const UserHeader = () => {
 
     const user = useSelector(state => state.user.loggedInUser);
     const userInfos = useSelector(state => state.userInfos);
     const dispatch = useDispatch();
-
+    
     const isValidToken = decodeToken(localStorage.getItem("token"));
     const isComplete = Boolean(userInfos) && Boolean(isValidToken);
 
@@ -29,8 +29,11 @@ export const UserHeader = () => {
               dispatch(getUserInfos(userInfos));
               
             } catch (error) {
-              console.error(error);
+                console.error(error);
             }
+            dispatch(isLoading(false));
+          } else {
+            dispatch(isLoading(false));
           }
         };
         connect();

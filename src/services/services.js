@@ -55,29 +55,6 @@ async function UserLogin({userData}) {
  * @returns {Promise <Object>}
  */
 async function UserInfos(token) {
-  /* let auth;
-  const textToken = String(token.token);
-  if (localStorage.getItem("token")) {
-    auth = {
-      headers: {
-        'Authorization': 'Bearer '+localStorage.getItem("token")
-      }
-    };
-  } else {
-    auth = {
-      header: {
-        'Authorization' : 'Bearer '+textToken
-      }
-    }
-  }
-  const { data } = await axios
-    .post(`${baseURL}/api/v1/user/profile`, null, auth)
-    .then(response => response)
-    .catch((error) => {
-      console.error(error)
-    });
-  return data; */
-
   const auth = {
       headers: {
         'Authorization': 'Bearer '+localStorage.getItem("token")

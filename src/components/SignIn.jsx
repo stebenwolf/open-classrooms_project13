@@ -5,10 +5,10 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import PostData from '../services/services';
 import { logIn } from '../features/userSlice';
-import { logError, noError } from '../features/loginSlice';
+import { logError, noError } from '../features/loginErrorSlice';
 
 import { useNavigate } from 'react-router-dom';
-import { getUserInfos } from '../features/userInfosSlice';
+import { getUserInfos } from '../features/userInfos/userInfosSlice';
 
 function SignIn() {
   const loginUsername = useRef();
@@ -29,7 +29,7 @@ function SignIn() {
       "password": loginPwd.current.value
     };
 
-    console.log('record session : ', recordSession.current.checked);
+    //console.log('record session : ', recordSession.current.checked);
 
     try {
       const user = await PostData("UserLogin", userData);

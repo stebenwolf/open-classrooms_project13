@@ -2,7 +2,7 @@
 import React, {useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { nameUpdated } from "../userInfosSlice";
+import { nameUpdated } from "./userInfosSlice";
 import { editName } from "../userSlice";
 
 import PostData from "../../services/services";
@@ -36,6 +36,10 @@ export const EditUserNameForm = () => {
         }
     }
 
+    const onCancelClicked = () => {
+        dispatch(editName(false));
+    }
+
     return (
         <section>
             <form>
@@ -57,6 +61,7 @@ export const EditUserNameForm = () => {
                 />
             </form>
             <button type="button" className="edit-button" onClick={onSaveNameClicked}>Save</button>
+            <button type="reset" className="edit-button" onClick={onCancelClicked}>Cancel</button>
         </section>
     )
 }

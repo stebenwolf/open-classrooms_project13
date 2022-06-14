@@ -6,7 +6,8 @@ export const userSlice = createSlice({
     loggedInUser: null,
     isEditing: false,
     token: null,
-    tokenPath: null
+    tokenPath: null,
+    isLoading: true
   },
   reducers: {
     logOut: state => {
@@ -23,10 +24,13 @@ export const userSlice = createSlice({
     },
     setTokenPath: (state, action) => {
       state.tokenPath = action.payload
+    },
+    isLoading: (state, action) => {
+      state.isLoading = action.payload
     }
   }
 });
 
-export const { logIn, logOut, editName, setToken, setTokenPath } = userSlice.actions;
+export const { logIn, logOut, editName, setToken, setTokenPath, isLoading } = userSlice.actions;
 
 export default userSlice.reducer;
